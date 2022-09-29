@@ -5,7 +5,7 @@ EC2 instance on AWS with the  following specification
 > Instance ID : t2.micro
   Type : Ubuntu server 22.04 LTS (HVM)
 
-![EC2 Creation](/img/lemp1.png)
+![EC2 Creation](img/lemp1.png)
 
 ## Installing The Nginx Web Server
 1. Install Nginx and confirm the installation
@@ -18,30 +18,30 @@ sudo apt install nginx
 #verify the installation
 sudo systemctl status nginx`
 
-![nginx installation](/img/lemp2.png)
-![nginx installation](/img/lemp3.png)
+![nginx installation](img/lemp2.png)
+![nginx installation](img/lemp3.png)
 
 2. Open port 80 so the webserver can receive traffic
-![open port 80](/img/lemp4.png)
+![open port 80](img/lemp4.png)
 
 3. Try to access the server locally 
 `curl http://localhost:80
 or
 curl http://127.0.0.1:80`
 
-![accessing the server locally](/img/lemp5.png)
+![accessing the server locally](img/lemp5.png)
 
 4. Try to access the server from your browser
 `http://<Public-IP-Address>:80`
 
-![accessing the server from the browser](/img/lemp6.png)
+![accessing the server from the browser](img/lemp6.png)
 
 ## Installing MySQL
 1. Use 'apt' to install the software
 `#install the sql server
 sudo apt install mysql-server`
 
-![install mysql server](/img/lemp7.png)
+![install mysql server](img/lemp7.png)
 
 2. Log into the console by running:
 `sudo mysql`
@@ -75,7 +75,7 @@ sudo apt install php-fpm
 #install php-mysql
 sudo apt install php-mysql`
 
-![install PHP components](/img/lemp8.png)
+![install PHP components](img/lemp8.png)
 
 PHP components are installed.
 
@@ -134,7 +134,7 @@ sudo systemctl reload nginx`
 
 5. Open the website URL using IP address from a browser
 `http://<Public-IP-Address>:80`
-![http://<Public-IP-Address>:80](/img/lemp9.png)
+![http://<Public-IP-Address>:80](img/lemp9.png)
 
 The index.html file take precedence over index.php, so rename or remove the index.html file.
 
