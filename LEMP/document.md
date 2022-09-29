@@ -9,6 +9,7 @@ EC2 instance on AWS with the  following specification
 
 ## Installing The Nginx Web Server
 1. Install Nginx and confirm the installation
+
 `#update the server's package index
 sudo apt update
 
