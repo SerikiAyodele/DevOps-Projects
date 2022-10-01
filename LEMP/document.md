@@ -152,3 +152,76 @@ phpinfo();
 #access the page in your web browser
 http://`server_domain_or_IP`/info.php
 
+## Getting Data From The BD With MySQL
+Creating a test database with a simple TO-DO list and configuring access to it , so the NGINX website would be able to query data from the DB and dispaly it.
+1. create a test DB
+![creating the DB](img/lemp10.png)
+
+2. Create a user and grant them full privileges on the DB
+```
+#create user
+mysql> CREATE USER 'example_user'@'%' IDENTIFIED WITH mysql_native_password BY 'password';
+
+#give full permission to the user
+mysql> GRANT ALL ON example_database.* TO 'example_user'@'%';
+
+#exit
+mysql> exit
+
+#Test if the new user has permission
+mysql> mysql -u test_user -p
+```
+
+![creating the user](img/lemp11.png)
+
+3. Confirm access to the database
+
+![Confirm access to the database](img/lemp12.png)
+
+4. Create a test table called 'list'
+
+```
+#creating the table 
+mysql> CREATE TABLE testDB.list (item_id INT AUTO_INCREMENT, content VARCHAR(255), PRIMARY KEY(item_id));
+
+#adding content to the table
+mysql> INSERT INTO testDB.list (content) VALUES ("My first important item");
+
+#confirm the data was saved
+mysql> SELECT * FROM testDB.list;
+
+#quit mysql
+mysql> exit
+```
+
+![creating the table](img/lemp13.png)
+
+4. Create a PHP script that will connect to MySQL and query for the contents
+```
+#creating the script
+/var/www/projectlemp$ sudo nano list.php
+
+#content of the php file
+<?php
+$user = "test_user";
+$password = "PassWord.1";
+$database = "testDB";
+$table = "list";
+
+try {
+  $db = new PDO("mysql:host=localhost;dbname=$database", $user, $password);
+  echo "<h2>TODO</h2><ol>";
+  foreach($db->query("SELECT content FROM $table") as $row) {
+    echo "<li>" . $row['content'] . "</li>";
+  }
+  echo "</ol>";
+} catch (PDOException $e) {
+    print "Error!: " . $e->getMessage() . "<br/>";
+    die();
+}
+```
+
+5. Access the page from the web browser
+`http://<Public_domain_or_IP>/todo_list.php`
+
+
