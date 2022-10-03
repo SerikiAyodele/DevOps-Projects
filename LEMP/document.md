@@ -1,6 +1,6 @@
 # LEMP STACK IMPLEMENTATION WITH AWS
 
-## **Prerequisites**
+## Prerequisites
 EC2 instance on AWS with the  following specification
 > Instance ID : t2.micro
   Type : Ubuntu server 22.04 LTS (HVM)
