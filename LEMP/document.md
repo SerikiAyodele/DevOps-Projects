@@ -214,7 +214,7 @@ mysql> exit
 
 ![creating the table](img/lemp13.png)
 
-4. Create a PHP script that will connect to MySQL and query for the contents
+5. Create a PHP script that will connect to MySQL and query for the contents
 ```
 #creating the script
 /var/www/projectlemp$ sudo nano list.php
@@ -239,7 +239,7 @@ try {
 }
 ```
 
-5. Access the page from the web browser
+6. Access the page from the web browser
 `http://<Public_domain_or_IP>/todo_list.php`
 
 
