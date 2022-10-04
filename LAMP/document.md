@@ -5,7 +5,7 @@ Create an EC2 instance on AWS with the  following specification
 > Instance ID : t2.micro
   Type : Ubuntu server 22.04 LTS (HVM)
 
-![EC2 Creation](/img/lamp1.png)
+![EC2 Creation](img/lamp1.png)
 
 ## Installing The Apache Server
 Apache server is a widely used web server and runs on 67% of all webservers in the world
@@ -92,5 +92,57 @@ sudo apt install php-mysql
 PHP components are installed.
 
 
-## Creating A Virtual Host For Your Website Usinng Apache
+## Creating A Virtual Host For Your Website Using Apache
 To test the setup with a PHP script, set up a proper Apache Virtual Host to hold the website’s files and folders. 
+
+1. Set up a domain called projectlamp
+```
+#Create the directory for projectlamp using ‘mkdir’
+sudo mkdir /var/www/projectlamp
+
+#give ownership of the directory to the system user
+sudo chown -R $USER:$USER /var/www/projectlamp
+```
+
+2. Create and open a new configuration file in Apache’s sites-available directory
+```
+sudo vi /etc/apache2/sites-available/projectlamp.conf
+
+#content of the file
+<VirtualHost *:80>
+    ServerName projectlamp
+    ServerAlias www.projectlamp 
+    ServerAdmin webmaster@localhost
+    DocumentRoot /var/www/projectlamp
+    ErrorLog ${APACHE_LOG_DIR}/error.log
+    CustomLog ${APACHE_LOG_DIR}/access.log combined
+</VirtualHost>
+```
+We’re telling Apache to serve projectlamp using /var/www/projectlamp as its web root directory
+
+3. Enable the new virtual host
+`sudo a2ensite projectlamp`
+
+4. Test that the virtual host works as expected
+```
+# Put this conte t in the web root  /var/www/projectlamp
+sudo echo 'Hello LAMP from hostname' $(curl -s http://169.254.169.254/latest/meta-data/public-hostname) 'with public IP' $(curl -s http://169.254.169.254/latest/meta-data/public-ipv4) > /var/www/projectlamp/index.html
+```
+
+5. Access the web url through a browser
+`http://<Public-IP-Address>:80`
+
+![http://<Public-IP-Address>:80](img/lamp9.png)
+
+The index.html file take precedence over index.php, so rename or remove the index.html file.
+
+## Enabling PHP On The Website
+1. Create an index.php file inside the web root folder
+```vim /var/www/projectlamp/index.php
+
+#add the php code
+<?php
+phpinfo();
+```
+2. Refresh your browser
+![php](img/lamp10.png)
