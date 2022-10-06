@@ -46,3 +46,66 @@ Follow the prompts after running the command. You can press Enter several times 
 ![initialise project](img/mern5.png)
 
 ## Installing ExpressJS
+1. Express is a framework for Node.js
+```
+#install express
+npm install express
+
+#install the dotenv module
+npm install dotenv
+```
+![install express](img/mern6.png)
+
+![install dotenv](img/mern7.png)
+
+3. create na index.js file and add the contents in it 
+```
+#create the file
+touch index.js
+
+#open the file
+vim index.js
+```
+
+#contents
+![content](img/mern8.png)
+
+4. Start the server to see if it works
+`node index.js`
+![start the server](img/mern9.png)
+
+5. Open port 5000 in the EC2 security group on AWS
+![Open port 5000](img/mern10.png)
+
+6. Try to access on browser
+`http://<public-ip-address>:5000
+
+![Open port 5000](img/mern11.png)
+
+## Routing
+For every task the To-Do app performs, there has to be an endpoint associated with the task(making use of HTTP request methods).
+1.Create a routes directory and a file containing the code as shown.
+```
+#create directory
+mkdir routes
+
+#go into it
+cd routes
+
+#create file
+touch api.js
+
+#open file
+vim api.js
+```
+![code](img/mern12.png)
+
+## Models
+The app is going to make use of Mongodb which is a NoSQL database, so we'll need to create a model.
+A model is at the heart of JavaScript based applications, and it is what makes it interactive.
+
+We will use models to define the database schema, the Schema is a blueprint of how the database will be constructed
+
+To create a Schema and a model, install mongoose which is a Node.js package.
+
+## Setting Up MongoDB 
