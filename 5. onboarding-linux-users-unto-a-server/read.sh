@@ -1,6 +1,14 @@
 #!/bin/bash
+userfile = /shell/names.csv
+username =$(cat /shell/names.csv | tr 'A-Z' 'a-z')
 
-while read line
+for user in username
 do
-   echo "$line"
-done < names.csv
+  grep $user
+  useradd $user
+  useradd -g developers $user
+  usermod -d /home $user
+  test -d /.ssh && echo exists
+  mkdir /home/$user/.ssh
+  touch /home/$user/.ssh/authorized_keys
+done 
