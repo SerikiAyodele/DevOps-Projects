@@ -101,11 +101,18 @@ vim api.js
 ![code](img/mern12.png)
 
 ## Models
-The app is going to make use of Mongodb which is a NoSQL database, so we'll need to create a model.
-A model is at the heart of JavaScript based applications, and it is what makes it interactive.
+Models are what make the JavaScript applications interactive
+A schema is a blueprint of how the database will be construtced
+To create a schema, we'll have to install mongose which is a Node.js package
 
-We will use models to define the database schema, the Schema is a blueprint of how the database will be constructed
+```
+#To install mongose, create the models directory and create a file in the directory
+mkdir models && cd models && touch todo.js
+```
+In the todo.js file
+![code](img/mern13.png)
 
-To create a Schema and a model, install mongoose which is a Node.js package.
+In the api.js file
+![code](img/mern14.png)
 
 ## Setting Up MongoDB 
