@@ -26,3 +26,4 @@
    - create a private key file. this private key will recognize the public key on the server you're trying to log into and authorize you as a developer.
    - give the file only neccessary permissions and ssh into the server 
    ![log in as a user](img/6.png)
+>>>>>>>>> Temporary merge branch 2
