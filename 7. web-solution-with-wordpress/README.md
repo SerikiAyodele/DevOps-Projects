@@ -34,7 +34,24 @@
 sudo lsblk `
 ![img](img/11.png)
 
-11. 
+11. Formating the logical volumes with ext4 filesystem
+`sudo mkfs -t ext4 /dev/webdata-vg/apps-lv
+sudo mkfs -t ext4 /dev/webdata-vg/logs-lv`
 
+12. Creating /var/www/html directory to store website files and /home/recovery/logs to store backup of log data
+`sudo mkdir -p /var/www/html
+sudo mkdir -p /home/recovery/logs`
+
+13. Mounting /var/www/html on apps-lv logical volume
+`sudo mount /dev/webdata-vg/apps-lv /var/www/html/`
+
+14. Using rsync utility to backup all the files in the log directory /var/log into /home/recovery/logs
+`sudo rsync -av /var/log/. /home/recovery/logs/`
+
+15. Mounting /var/log on logs-lv logical volume. (Note that all the existing data on /var/log will be deleted.
+`sudo mount /dev/webdata-vg/logs-lv /var/log`
+
+===============
+Updating /etc/fstab file so that the mount configuration will persist after restart of the server.
  
  
