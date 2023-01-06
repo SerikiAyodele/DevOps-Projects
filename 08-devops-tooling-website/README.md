@@ -118,5 +118,15 @@ setsebool -P httpd_execmem 1
 Jan 04 08:39:35 ip-172-31-1-111.ec2.internal systemd[1]: Starting The PHP FastCGI Process Manager...
 Jan 04 08:39:35 ip-172-31-1-111.ec2.internal systemd[1]: Started The PHP FastCGI Process Manager.
 ```
+6. To confirm that NFS has been mounted properly, the files and directories on the webserver  /var/www should also be on the NFS server /mnt/apps
+![web server](img/12.png)
+![nfs-server](img/13.png)
+
+7. Locate the log folder for Apache on the Web Server and mount it to NFS server’s export for logs, persist the change.
+![mounting](img/14.png)
+![persisting](img/15.png)
+![rebooting](img/16.png)
+
+
 
 
