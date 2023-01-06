@@ -5,10 +5,10 @@ Implement a tooling website solution which makes access to DevOps tools within t
 
 ## Step 1 – Prepare NFS Server
 
-1. Using an EC2 instance with RHEL Linux 8 Operating System
+**1.** Using an EC2 instance with RHEL Linux 8 Operating System
 ![ec2 instance](img/1.png)
 
-2. Configuring LVM on the server
+**2.** Configuring LVM on the server
 
 3. Install NFS server on the instance 
 ```
