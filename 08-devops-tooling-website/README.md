@@ -163,12 +163,14 @@ Jan 04 08:39:35 ip-172-31-1-111.ec2.internal systemd[1]: Started The PHP FastCGI
 
 
 
-mysql 172.31.1.191 -u tooling -p password < tooling-db.sql
+mysql -h 172.31.1.191 -u webaccess -p password < tooling-db.sql
+mysql -h 172.31.1.191 -u 'webaccess'@'172.31.1.0/24' -p password < tooling-db.sql
 
-INSERT INTO ‘users’ (‘id’, ‘username’, ‘password’, ’email’, ‘user_type’, ‘status’) VALUES(1, ‘myuser’, ‘5f4dcc3b5aa765d61d8327deb882cf99’, ‘user@mail.com’, ‘admin’, ‘1’);
+INSERT INTO users(‘id’, ‘username’, ‘password’, ’email’, ‘user_type’, ‘status’) VALUES(1, ‘myuser’, ‘5f4dcc3b5aa765d61d8327deb882cf99’, ‘user@mail.com’, ‘admin’, ‘1’);
 
+problem 1: SET PASSWORD FOR 'webaccess'@'172.31.1.0/24' = 'password';
 
-
+http://44.202.52.192/index.php 
 
 
 
