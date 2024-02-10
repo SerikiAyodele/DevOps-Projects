@@ -1,4 +1,4 @@
-version: '3.0'
+version: '3'
 services:
   my-app:
     build: 
@@ -7,8 +7,8 @@ services:
     ports: 
     - 3000:3000
     environment:
-    - MONGO_INITDB_ROOT_USERNAME=admin
-    - MONGO_INITDB_ROOT_PASSWORD=password
+    - MONGO_DB_USERNAME=admin
+    - MONGO_DB_PWDD=password
 
   mongodb:
     image: mongo
@@ -28,6 +28,9 @@ services:
       - ME_CONFIG_MONGODB_ADMINUSERNAME=admin
       - ME_CONFIG_MONGODB_ADMINPASSWORD=password
       - ME_CONFIG_MONGODB_SERVER=mongodb
+    depends_on:
+     - "mongodb"
+
 volumes:
   mongo-data:
     driver: local
