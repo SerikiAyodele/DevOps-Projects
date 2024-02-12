@@ -21,17 +21,14 @@ app.get('/profile-picture', function (req, res) {
   res.end(img, 'binary');
 });
 
-// use when starting application locally
-let mongoUrlLocal = "mongo://admin:password@localhost:27017/admin?directConnection=true";
-
 // use when starting application as docker container
-let mongoUrlDocker = "mongodb://admin:password@mongodb";
+let mongoUrlDocker = `mongodb://admin:password@mongodb`;
 
 // pass these options to mongo client connect request to avoid DeprecationWarning for current Server Discovery and Monitoring engine
 let mongoClientOptions = { useNewUrlParser: true, useUnifiedTopology: true };
 
 // "user-account" in demo with docker. "my-db" in demo with docker-compose
-let databaseName = "mia";
+let databaseName = "my-db";
 
 app.post('/update-profile', function (req, res) {
   let userObj = req.body;
